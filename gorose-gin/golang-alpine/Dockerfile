@@ -12,7 +12,9 @@ ENV GO111MODULE on
 # ############## proxy ##############
 RUN export GOPROXY=https://goproxy.cn
 
-# ############## gorose init & run for once ###########
-RUN cd /go/src/gopro && go mod tidy && go mod download
+# ############## gorose-gin init & run for once ###########
+ENV GOPRODIR /go/src/gopro/
+COPY demo/* $GOPRODIR
+RUN cd $GOPRODIR && go mod tidy && go mod download
 
-WORKDIR /go/src/gopro
+WORKDIR $GOPRODIR

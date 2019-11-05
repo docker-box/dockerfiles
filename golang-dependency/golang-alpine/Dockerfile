@@ -10,7 +10,7 @@ ENV PROXY https://goproxy.cn
 ENV GO111MODULE on
 
 # ############## proxy ##############
-#RUN export GOPROXY=$PROXY
+RUN export GOPROXY=$PROXY
 
 # ############## golang dependency ###########
 RUN apk add gcc
