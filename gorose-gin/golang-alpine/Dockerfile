@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM go-depend
 
 # ############## author ##############
 LABEL maintainer="fizzday <fizzday@yeah.net>" \
@@ -9,16 +9,10 @@ ENV TZ Asia/Shanghai
 ENV GOROSE_GIN_VERSION master
 ENV GO111MODULE on
 
-# ############## golang dependency ###########
-RUN apk add gcc
-RUN apk add libc-dev
-RUN apk add --no-cache git
-
-# ############## work dir ###########
-RUN mkdir -p /var/www
-COPY demo/* /var/www/
+# ############## proxy ##############
+RUN export GOPROXY=https://goproxy.cn
 
 # ############## gorose init & run for once ###########
-RUN cd /var/www && go mod tidy && go mod download
+RUN cd /go/src/gopro && go mod tidy && go mod download
 
-WORKDIR /var/www
+WORKDIR /go/src/gopro
