@@ -1,4 +1,4 @@
-FROM go-depend
+FROM ababy/golang-dependency
 
 # ############## author ##############
 LABEL maintainer="fizzday <fizzday@yeah.net>" \

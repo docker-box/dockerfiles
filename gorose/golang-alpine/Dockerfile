@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM ababy/golang-dependency
 
 # ############## author ##############
 LABEL maintainer="fizzday <fizzday@yeah.net>" \
@@ -9,11 +9,6 @@ ENV TZ Asia/Shanghai
 ENV GOROSE_VERSION master
 ENV GO111MODULE on
 ENV GOPRODIR /var/www/
-
-# ############## golang dependency ###########
-RUN apk add gcc
-RUN apk add libc-dev
-RUN apk add --no-cache git
 
 # ############## work dir ###########
 RUN mkdir -p $GOPRODIR
