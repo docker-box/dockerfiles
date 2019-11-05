@@ -17,4 +17,7 @@ RUN export GOPROXY=https://goproxy.cn
 COPY demo/* $GOPRODIR
 RUN cd $GOPRODIR && go mod tidy && go mod download
 
+# 打包一次, 方便初始化用
+RUN go build -o xxx.bin && rm -f xxx.bin
+
 WORKDIR $GOPRODIR
