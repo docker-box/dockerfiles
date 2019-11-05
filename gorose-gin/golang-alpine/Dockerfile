@@ -8,12 +8,12 @@ LABEL maintainer="fizzday <fizzday@yeah.net>" \
 ENV TZ Asia/Shanghai
 ENV GOROSE_GIN_VERSION master
 ENV GO111MODULE on
+ENV GOPRODIR /var/www/
 
 # ############## proxy ##############
 RUN export GOPROXY=https://goproxy.cn
 
 # ############## gorose-gin init & run for once ###########
-ENV GOPRODIR /go/src/gopro/
 COPY demo/* $GOPRODIR
 RUN cd $GOPRODIR && go mod tidy && go mod download
 

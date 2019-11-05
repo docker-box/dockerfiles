@@ -8,6 +8,7 @@ LABEL maintainer="fizzday <fizzday@yeah.net>" \
 ENV TZ Asia/Shanghai
 ENV PROXY https://goproxy.cn
 ENV GO111MODULE on
+ENV GOPRODIR /var/www
 
 # ############## proxy ##############
 RUN export GOPROXY=$PROXY
@@ -18,6 +19,6 @@ RUN apk add libc-dev
 RUN apk add --no-cache git
 
 # ############## work dir ###########
-RUN mkdir -p /go/src/gopro
+RUN mkdir -p $GOPRODIR
 
-WORKDIR /go/src/gopro
+WORKDIR $GOPRODIR
