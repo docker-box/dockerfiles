@@ -14,8 +14,9 @@ ENV GOPRODIR /var/www/
 RUN export GOPROXY=https://goproxy.cn
 
 # ############## gorose-gin init & run for once ###########
-COPY demo/* $GOPRODIR
-RUN cd $GOPRODIR && go mod tidy && go mod download
+RUN cd $GOPRODIR
+RUN git clone https://github.com/gohouse/goroseGin.git .
+RUN go mod tidy && go mod download
 
 # 打包一次, 方便初始化用
 RUN go build -o xxx.bin && rm -f xxx.bin
